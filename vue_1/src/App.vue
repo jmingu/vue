@@ -8,7 +8,7 @@
       <label for="password">PW:</label>
       <input type="text" v-model="password">
     </div>
-    <button type="submit">로그인</button>
+    <button type="submit">로그인하기</button>
   </form>
 
   
