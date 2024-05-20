@@ -4,7 +4,6 @@
 
         <span class="addContainer" v-on:click="addTodo">
             <i class="fas fa-plus addBtn">
-                +
             </i>
 
         </span>
