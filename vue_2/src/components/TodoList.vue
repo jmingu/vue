@@ -1,8 +1,10 @@
 <template>
     <div>
         <ul>
-            <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem" class="shadow">
-                {{ todoItem }}
+            <li v-for="(todoItem, index) in todoItems" v-bind:key="index" class="shadow">
+                <i class="checkBtn fas fa-check" v-bind:class="{checkBtnCompleted : todoItem.completed}" 
+                v-on:click="toggleComplete(todoItem)"></i>
+                <span v-bind:class="{textCompleted : todoItem.completed}">{{ todoItem.item }}</span>
                 <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
                     <i class="fas fa-trash-alt"></i>
                 </span>
@@ -20,14 +22,20 @@
         },
         methods:{
             removeTodo(todoItem, index){
-                localStorage.removeItem(todoItem);
+                localStorage.removeItem(todoItem.item);
                 this.todoItems.splice(index, 1);
+            },
+            toggleComplete(todoItem){
+                todoItem.completed = !todoItem.completed;
+                // 로컬스토리지 갱신
+                localStorage.removeItem(todoItem.item);
+                localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
             }
         },
         created(){
             if(localStorage.length > 0 ){
                 for(let i=0; i<localStorage.length; i++){
-                    this.todoItems.push(localStorage.key(i));
+                    this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
                 }
             }
         }
