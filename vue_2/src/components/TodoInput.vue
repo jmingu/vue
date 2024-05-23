@@ -5,14 +5,25 @@
     <span class="addContainer" v-on:click="addTodo">
       <i class="fas fa-plus addBtn"> </i>
     </span>
+    <AlertModal :show="showModal" @close="showModal = false">
+      <template #header>
+        <h3>경고</h3>
+      </template>
+    </AlertModal>
   </div>
 </template>
 
 <script>
+import AlertModal from './common/AlertModal.vue';
+
 export default {
+  components: {
+    AlertModal,
+  },
   data() {
     return {
       newTodoItem: '',
+      showModal: false,
     };
   },
   methods: {
@@ -21,6 +32,9 @@ export default {
       if (this.newTodoItem !== '') {
         this.$emit('addTodoItem', this.newTodoItem);
         this.clearInput();
+      } else {
+        console.log('sss');
+        this.showModal = !this.showModal;
       }
     },
     clearInput() {

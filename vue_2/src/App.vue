@@ -18,6 +18,12 @@ import TodoFooter from './components/TodoFooter.vue';
 import TodoInput from './components/TodoInput.vue';
 
 export default {
+  components: {
+    TodoHeader,
+    TodoList,
+    TodoFooter,
+    TodoInput,
+  },
   data() {
     return {
       todoItems: [],
@@ -55,12 +61,6 @@ export default {
         );
       }
     }
-  },
-  components: {
-    TodoHeader,
-    TodoList,
-    TodoFooter,
-    TodoInput,
   },
 };
 </script>
