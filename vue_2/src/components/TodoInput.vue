@@ -7,7 +7,13 @@
     </span>
     <AlertModal :show="showModal" @close="showModal = false">
       <template #header>
-        <h3>경고</h3>
+        <h3>
+          경고
+          <i class="closeModaBtn fas fa-times" @click="showModal = false"></i>
+        </h3>
+      </template>
+      <template #body>
+        <h3>값이 비었습니다.</h3>
       </template>
     </AlertModal>
   </div>
@@ -33,7 +39,6 @@ export default {
         this.$emit('addTodoItem', this.newTodoItem);
         this.clearInput();
       } else {
-        console.log('sss');
         this.showModal = !this.showModal;
       }
     },
@@ -68,5 +73,8 @@ input:focus {
 .addBtn {
   color: white;
   vertical-align: middle;
+}
+.closeModaBtn {
+  color: #42b983;
 }
 </style>
