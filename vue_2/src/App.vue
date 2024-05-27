@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     addOneItem(todoItem) {
-      let obj = {
+      const obj = {
         completed: false,
         item: todoItem,
       };
