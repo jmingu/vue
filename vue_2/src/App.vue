@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <TodoHeader></TodoHeader>
-    <TodoInput v-on:addTodoItem="addOneItem"></TodoInput>
-    <TodoList
+    <TodoInput></TodoInput>
+    <TodoList></TodoList>
+    <!-- <TodoList
       v-bind:propsdata="todoItems"
       v-on:removeItem="removeOneItem"
       v-on:toggleItem="toggleOneItem"
-    ></TodoList>
+    ></TodoList> -->
     <TodoFooter v-on:clearAll="clearAllItems"></TodoFooter>
   </div>
 </template>
@@ -26,41 +27,32 @@ export default {
   },
   data() {
     return {
-      todoItems: [],
+      // todoItems: [],
     };
   },
   methods: {
-    addOneItem(todoItem) {
-      const obj = {
-        completed: false,
-        item: todoItem,
-      };
-      localStorage.setItem(todoItem, JSON.stringify(obj));
-      this.todoItems.push(obj);
-    },
-    removeOneItem(todoItem, index) {
-      localStorage.removeItem(todoItem.item);
-      this.todoItems.splice(index, 1);
-    },
-    toggleOneItem(todoItem, index) {
-      this.todoItems[index].completed = !this.todoItems[index].completed;
-      // 로컬스토리지 갱신
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    },
-    clearAllItems() {
-      localStorage.clear();
-      this.todoItems = [];
-    },
-  },
-  created() {
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        this.todoItems.push(
-          JSON.parse(localStorage.getItem(localStorage.key(i)))
-        );
-      }
-    }
+    // addOneItem(todoItem) {
+    //   const obj = {
+    //     completed: false,
+    //     item: todoItem,
+    //   };
+    //   localStorage.setItem(todoItem, JSON.stringify(obj));
+    //   this.todoItems.push(obj);
+    // },
+    // removeOneItem(todoItem, index) {
+    //   localStorage.removeItem(todoItem.item);
+    //   this.todoItems.splice(index, 1);
+    // },
+    // toggleOneItem(todoItem, index) {
+    //   this.todoItems[index].completed = !this.todoItems[index].completed;
+    //   // 로컬스토리지 갱신
+    //   localStorage.removeItem(todoItem.item);
+    //   localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    // },
+    // clearAllItems() {
+    //   localStorage.clear();
+    //   this.todoItems = [];
+    // },
   },
 };
 </script>
