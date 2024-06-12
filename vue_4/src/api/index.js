@@ -10,8 +10,11 @@ function fetchNewsList() {
 }
 
 function fetchAskList() {
-  // return axios.get(config.baseUrl + '/news/1.json');
   return axios.get(`${config.baseUrl}ask/1.json`);
 }
 
-export { fetchNewsList, fetchAskList };
+function fetchJobsList() {
+  return axios.get(`${config.baseUrl}jobs/1.json`);
+}
+
+export { fetchNewsList, fetchAskList, fetchJobsList };
